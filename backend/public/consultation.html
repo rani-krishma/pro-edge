@@ -2,125 +2,251 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Consultation</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultation – Grandrise Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#000;
-  color:#fff;
+:root { --gold: #C8A96E; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Barlow, sans-serif; background: #000; color: #fff; min-height: 100vh; }
+
+nav {
+  position: fixed; top: 0; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 70px; background: #000;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.3); z-index: 1000;
+}
+.logo-container { display: flex; align-items: center; gap: 18px; }
+.logo-img { height: 85px; width: 200px; object-fit: contain; }
+.company-name { font-family: "Cormorant Garamond"; font-size: 34px; color: #fff; font-weight: 700; }
+.company-name span { color: var(--gold); }
+.nav-links { display: flex; gap: 35px; list-style: none; }
+.nav-links a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+
+.page-hero {
+  padding: 180px 80px 80px;
+  background: linear-gradient(to bottom, #000 60%, #0d0d0d);
+  border-bottom: 1px solid rgba(200,169,110,0.15);
+}
+.page-hero h1 { font-family: "Cormorant Garamond"; font-size: 64px; line-height: 1.1; }
+.page-hero h1 em { color: var(--gold); font-style: normal; }
+.page-hero p { margin-top: 18px; color: #bbb; font-size: 17px; line-height: 1.8; max-width: 600px; }
+
+.contact-section { padding: 80px; max-width: 1000px; margin: auto; }
+
+.contact-intro {
+  margin-bottom: 50px;
+}
+.contact-intro h2 {
+  font-family: "Cormorant Garamond"; font-size: 42px; margin-bottom: 15px;
+}
+.contact-intro p { color: #bbb; font-size: 16px; line-height: 1.8; max-width: 650px; }
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 50px;
 }
 
-.container{
-  max-width:600px;
-  margin:80px auto;
-  padding:30px;
-  background:rgba(255,255,255,0.05);
-  border-radius:10px;
+.contact-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,169,110,0.15);
+  border-radius: 14px;
+  padding: 35px 28px;
+  transition: 0.3s;
+}
+.contact-card:hover {
+  background: rgba(200,169,110,0.06);
+  border-color: rgba(200,169,110,0.35);
+  transform: translateY(-5px);
+}
+.contact-card .icon {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+.contact-card h3 {
+  font-family: "Cormorant Garamond";
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.contact-card p, .contact-card a {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.7;
+  text-decoration: none;
+  display: block;
+}
+.contact-card a:hover { color: var(--gold); }
+
+.map-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,169,110,0.15);
+  border-radius: 14px;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+.map-box h3 {
+  font-family: "Cormorant Garamond";
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: var(--gold);
+}
+.map-box p { color: #bbb; margin-bottom: 20px; font-size: 15px; }
+.map-box iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 10px;
+  filter: grayscale(30%) invert(90%) hue-rotate(180deg);
+  opacity: 0.85;
 }
 
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  background:#111;
-  border:1px solid #333;
-  color:#fff;
+.hours-box {
+  background: rgba(200,169,110,0.06);
+  border: 1px solid rgba(200,169,110,0.2);
+  border-radius: 14px;
+  padding: 35px 40px;
 }
-
-button{
-  width:100%;
-  padding:14px;
-  background:#C8A96E;
-  border:none;
-  font-weight:bold;
-  cursor:pointer;
+.hours-box h3 {
+  font-family: "Cormorant Garamond";
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 20px;
 }
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  color: #ccc;
+  font-size: 15px;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-row span:last-child { color: #fff; font-weight: 500; }
 
-button:disabled{
-  opacity:0.6;
-  cursor:not-allowed;
+.back-btn {
+  display: inline-block;
+  margin-top: 50px;
+  padding: 13px 28px;
+  background: var(--gold);
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: 0.3s;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+.back-btn:hover { opacity: 0.85; }
+
+footer {
+  background: linear-gradient(135deg, hsl(47,81%,51%), #0d0d0d, #1a1a1a);
+  padding: 40px 80px;
+  text-align: center;
+  color: #aaa;
+  border-top: 1px solid rgba(200,169,110,0.2);
+  font-size: 13px;
+}
+footer a { color: #ccc; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: var(--gold); }
+.footer-bottom { margin-top: 15px; color: #666; }
+
+@media(max-width:900px){
+  nav { padding: 15px 20px; }
+  .logo-img { height: 60px; }
+  .company-name { font-size: 22px; }
+  .nav-links { display: none; }
+  .page-hero { padding: 140px 25px 60px; }
+  .page-hero h1 { font-size: 42px; }
+  .contact-section { padding: 50px 25px; }
+  .contact-cards { grid-template-columns: 1fr; }
+  .hours-row { flex-direction: column; gap: 4px; }
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<nav>
+  <div class="logo-container">
+    <img src="1 copy 3.png" alt="Logo" class="logo-img">
+    <div class="company-name">Grandrise <span>Homes</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#about">ABOUT</a></li>
+    <li><a href="index.html#process">PROCESS</a></li>
+    <li><a href="index.html#gallery">PROJECTS</a></li>
+    <li><a href="index.html#testimonials">REVIEWS</a></li>
+    <li><a href="index.html#why">WHY US</a></li>
+    <li><a href="index.html#contact">CONTACT</a></li>
+  </ul>
+</nav>
 
-<h2>Book Consultation</h2>
+<div class="page-hero">
+  <h1>Book a <em>Consultation</em></h1>
+  <p>Ready to start your luxury home journey? Reach out to our team directly and we'll guide you through every step of the process.</p>
+</div>
 
-<form id="form">
+<div class="contact-section">
 
-<input type="text" id="name" placeholder="Name" required>
-<input type="email" id="email" placeholder="Email" required>
-<input type="tel" id="phone" placeholder="Phone" required>
+  <div class="contact-intro">
+    <h2>Get In Touch</h2>
+    <p>Contact us via phone, email, or visit our office. Our team is ready to discuss your project and help turn your dream home into reality.</p>
+  </div>
 
-<select id="projectType">
-  <option value="Custom Home">Custom Home</option>
-  <option value="Duplex">Duplex</option>
-  <option value="Investment">Investment</option>
-</select>
+  <div class="contact-cards">
 
-<textarea id="message" placeholder="Your message"></textarea>
+    <div class="contact-card">
+      <div class="icon">📞</div>
+      <h3>Call Us</h3>
+      <a href="tel:+61430436262">+61 430 436 262</a>
+      <p style="margin-top:8px; font-size:13px; color:#888;">Available Mon–Sat, 9am–6pm</p>
+    </div>
 
-<button id="btn" type="submit">Submit</button>
+    <div class="contact-card">
+      <div class="icon">✉️</div>
+      <h3>Email Us</h3>
+      <a href="mailto:Grandrise26@gmail.com">Grandrise26@gmail.com</a>
+      <p style="margin-top:8px; font-size:13px; color:#888;">We reply within 24 hours</p>
+    </div>
 
-</form>
+    <div class="contact-card">
+      <div class="icon">📍</div>
+      <h3>Visit Us</h3>
+      <p>Unit 13/11 Hartfoot Cres,<br>Edinburgh North SA 5113,<br>Australia</p>
+    </div>
 
-<p id="status"></p>
+  </div>
+
+  <div class="map-box">
+    <h3>Our Location</h3>
+    <p>Unit 13/11 Hartfoot Cres, Edinburgh North SA 5113</p>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3254.2!2d138.5934!3d-34.7134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0c0!2sEdinburgh+North+SA!5e0!3m2!1sen!2sau!4v1"
+      allowfullscreen loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="hours-box">
+    <h3>Business Hours</h3>
+    <div class="hours-row"><span>Monday – Friday</span><span>9:00 AM – 6:00 PM</span></div>
+    <div class="hours-row"><span>Saturday</span><span>10:00 AM – 4:00 PM</span></div>
+    <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Back to Home</a>
 
 </div>
 
-<script>
-const form = document.getElementById("form");
-const status = document.getElementById("status");
-const btn = document.getElementById("btn");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  btn.disabled = true;
-  status.innerText = "Submitting...";
-
-  const data = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    projectType: document.getElementById("projectType").value,
-    message: document.getElementById("message").value
-  };
-
-  try {
-    const res = await fetch("/consultation", { 
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-
-    const result = await res.json();
-
-    if (res.ok) {
-      alert("✅ " + result.message);
-      form.reset();
-      status.innerText = "Saved successfully!";
-    } else {
-      alert("❌ Error: " + result.error);
-      status.innerText = "Failed to save.";
-    }
-
-  } catch (err) {
-    alert("❌ Server not responding");
-    
-    status.innerText = "Backend not running!";
-  }
-
-  btn.disabled = false;
-});
-</script>
+<footer>
+  <a href="index.html#about">About</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#gallery">Projects</a>
+  <a href="index.html#contact">Contact</a>
+  <div class="footer-bottom">© 2026 Grandrise Homes — All Rights Reserved</div>
+</footer>
 
 </body>
 </html>
